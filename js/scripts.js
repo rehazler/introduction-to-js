@@ -9,7 +9,7 @@ console.log("I love programming but have had a handful of hiccups in my journey 
 			"the ocarina. I find it to be very relaxing and mentally stimulating.");
 */
 
-/*
+
 //Day 2 (In Class) - Variables and Console.log
 
 ///////
@@ -59,7 +59,7 @@ let minute = today.getMinutes();
 
 //Log current date and time to console
 console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
-*/
+
 
 //Day 2 (In Class) - Math
 //Create variable to store random number
@@ -69,13 +69,13 @@ console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
 const rand = Math.floor((Math.random() * 10) + 1);
 
 //Log rand variable contents to console
-//console.log(rand);
+console.log(rand);
 
 //Popup alert rand variable contents
-//alert(rand);
+alert(rand);
 
 //Confirm rand variable contents with the user
-//confirm(rand);
+confirm(rand);
 
 //Prompt rand variable contents and take user input
-//prompt(rand);
+prompt(rand);

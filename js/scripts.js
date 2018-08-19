@@ -66,7 +66,7 @@ console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
 //Generate random number between 1 and 10 by using Math.random() to get
 //a number between 0 and 1, multiply it by 10, and add 1 to prevent a 0
 //outcome, then round down.
-const rand = Math.floor((Math.random() * 10) + 1);
+//const rand = Math.floor((Math.random() * 10) + 1);
 
 //Log rand variable contents to console
 //console.log(rand);
@@ -79,3 +79,20 @@ const rand = Math.floor((Math.random() * 10) + 1);
 
 //Prompt rand variable contents and take user input
 //prompt(rand);
+
+
+//Day 2 (Take Home)
+const firstName = prompt("Please enter your first name.");
+const lastName = prompt("Please enter your last name.");
+
+console.log(`Your first name is ${firstName}`);
+alert(`Your last name is ${lastName}`);
+
+let birthday = prompt("Please enter your birthday.");
+
+while(!confirm(`Your birthday is on ${birthday}.`) || !birthday)
+{
+	birthday = prompt("Please re-enter your birthday.");	
+}
+alert(`${birthday} is your birthday`);
+alert("Bye bye!");

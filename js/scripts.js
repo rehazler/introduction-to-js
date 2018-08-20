@@ -1,4 +1,9 @@
-//Day 1 (Take Home)
+
+
+/////////////////////
+//Day 1 (Take Home)//
+/////////////////////
+
 //Log out into the console a string stating what I desire from
 //this class and one of my favorite hobbies._
 /*
@@ -9,12 +14,20 @@ console.log("I love programming but have had a handful of hiccups in my journey 
 			"the ocarina. I find it to be very relaxing and mentally stimulating.");
 */
 
+
+
+
+
 /*
-//Day 2 (In Class) - Variables and Console.log
+////////////////////////////////////////////////
+//Day 2 (In Class) - Variables and Console.log//
+////////////////////////////////////////////////
+
 
 ///////
 //ES5//
 /////// 
+
 //Create string variable myName and store my name in it
 //var myName = "Robert";
 
@@ -25,9 +38,12 @@ console.log("I love programming but have had a handful of hiccups in my journey 
 //console.log("Hello, " + myName + "! You are " + myAge + "years old.");
 
 
+
+
 ///////
 //ES6//
 ///////
+
 //Create string variable myName and store my name in it
 const myName = "Robert";
 
@@ -38,7 +54,12 @@ let myAge = 28
 console.log(`Hello, ${myName}! You are ${myAge} years old.`);
 
 
-//Day 2 (In Class) - Date
+
+
+///////////////////////////
+//Day 2 (In Class) - Date//
+///////////////////////////
+
 //Create variable to store date
 const today = new Date();
 
@@ -61,7 +82,13 @@ let minute = today.getMinutes();
 console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
 */
 
-//Day 2 (In Class) - Math
+
+
+
+///////////////////////////
+//Day 2 (In Class) - Math//
+///////////////////////////
+
 //Create variable to store random number
 //Generate random number between 1 and 10 by using Math.random() to get
 //a number between 0 and 1, multiply it by 10, and add 1 to prevent a 0
@@ -81,18 +108,39 @@ console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
 //prompt(rand);
 
 
-//Day 2 (Take Home)
-const firstName = prompt("Please enter your first name.");
-const lastName = prompt("Please enter your last name.");
 
+/////////////////////
+//Day 2 (Take Home)//
+/////////////////////
+
+//Create variable and store results from prompt that 
+//asks the users for their last name
+let firstName = prompt("Please enter your first name.");
+
+//Create variable and store results from prompt that 
+//asks the users for their last name
+let lastName = prompt("Please enter your last name.");
+
+//Log users first name to the console.
 console.log(`Your first name is ${firstName}`);
+
+//Popup alert the users entered last name
 alert(`Your last name is ${lastName}`);
 
-let birthday = prompt("Please enter your birthday.");
+//Create birthday variable to store date object
+let birthday = new Date()
 
+//Prompt user for their birthday
+birthday = prompt("Please enter your birthday.");
+
+
+//Loop birthday prompt if user does not enter a value, if 
+//value is null, or if the user clicks the cancel button.
 while(!confirm(`Your birthday is on ${birthday}.`) || !birthday)
 {
 	birthday = prompt("Please re-enter your birthday.");	
 }
+
+//Popup alert to display the users accepted birthday
 alert(`${birthday} is your birthday`);
 alert("Bye bye!");

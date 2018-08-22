@@ -321,10 +321,104 @@ alert("Bye bye!");
 //-= subtract value from currently stored value in a variable
 //*= multiply value by currently stored value in a variable
 ///= divide value by currently stored value in a variable
-let myNum = 1;
-myNum += 3; //4
-myNum -= 10; //-6
-myNum *= 5; //-30
-myNum /= 12; //-2.5
-console.log(myNum);
+// let myNum = 1;
+// myNum += 3; //4
+// myNum -= 10; //-6
+// myNum *= 5; //-30
+// myNum /= 12; //-2.5
+// console.log(myNum);
 
+
+
+/////////////////////
+//Day 3 (Take Home)//
+/////////////////////
+
+//Prompt user for their name and store it for later use
+let usersName = prompt("What is your name?");
+
+//Create bool for color choice validity testing
+let validColor = false;
+
+//Prepare string variables for color and alert message
+let color = new String();
+let message = new String();
+
+//Check if the user does not enter a name
+if(!usersName)
+{
+	//Set users name because they are a rebel who
+	//didn't set their name.
+	usersName = "NoNamePerson";
+	alert(`You didn't enter a proper name so ${usersName} is your name now!`)
+} 
+
+//Create loop to prompt user for a specific color
+//Continue loop if color doesn't exist.
+while(!validColor){
+	color = prompt("Of the following, which is your favorite color: \n"
+   					+ "Red, Orange, Yellow, Green, Blue, Pink, Purple, Black, White, Grey");
+
+	//If color is not null or undefined make color
+	//contents lowercase to prevent case sensitivity
+	if(color)
+	{
+		color = color.toLowerCase();
+	}
+
+	//Use switch to check color variable contents
+	switch(color)
+	{
+		//Create case for each possible color.
+		//Set message to user based on color chosen.
+		case "red":
+			validColor=true;
+			message = `${usersName} wears RED so his enemies can't see him bleed.`;
+			break;
+		case "orange":
+			validColor=true;
+			message = `${usersName}, ORANGE you glad that I didn't say banana?`;
+			break;
+		case "yellow":
+			validColor=true;
+			message = `YELLOW, ${usersName} long time no see.`;
+			break;
+		case "green":
+			validColor=true;
+			message = `${usersName}, GREEN is not a creative color.`;
+			break;
+		case "blue":
+			validColor=true;
+			message = `${usersName}, really? You just BLUE my mind!`;
+			break;
+		case "pink":
+			validColor=true;
+			message = `${usersName}, what do you PINK you are doing?!`;
+			break;
+		case "purple":
+			validColor=true;
+			message = `${usersName}, it's PURPLE? Maybe you should get that looked at.`;
+			break;
+		case "black":
+			validColor=true;
+			message = `${usersName}, you chose BLACK? That is dark, man.`;
+			break;
+		case "white":
+			validColor=true;
+			message = `${usersName}, WHITE is not bad, but it pales in comparison.`;
+			break;
+		case "grey":
+			validColor=true;
+			message = `${usersName}, GREY you say? I am indifferent.`;
+			break;
+		default:
+			//Mark invalid color if the entry doesn't match any of the above colors.
+			//Set message to inform the user of the invalid choice.
+			validColor = false;
+			message = `${usersName}, "${color}" was not an option, please try again.`
+	}
+
+	//Popup alert the users with the message
+	//based on the color chosen
+	alert(message);
+}

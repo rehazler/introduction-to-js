@@ -108,7 +108,7 @@ console.log(`${month} / ${day} / ${year}, ${hour}:${minute}`);
 //prompt(rand);
 
 
-
+/*
 /////////////////////
 //Day 2 (Take Home)//
 /////////////////////
@@ -144,3 +144,187 @@ while(!confirm(`Your birthday is on ${birthday}.`) || !birthday)
 //Popup alert to display the users accepted birthday
 alert(`${birthday} is your birthday`);
 alert("Bye bye!");
+*/
+
+
+
+
+///////////////////////////////////////////////
+//Day 3 (Conditionals & Comparison Operators)//
+///////////////////////////////////////////////
+
+//=== Strictly comparison - matches datatype and value
+//== Loosely comparison - not value sensitive
+//! is not
+//!== Strict not comparison
+//!= Loose not comparison
+//> Greater than comparison
+//< Less than comparison
+//>= Greater than or equal to comparsion
+//<= Less than or equal to comparison
+
+//const myNumber = "1";
+// const userInput = prompt('Please enter a number:')
+// if(1 == userInput) 
+// {
+// 	console.log("IF only that were true!");
+// 	// console.log(!true);
+
+// } 
+// else
+// {
+// 	console.log("What ELSE could happen?!");
+// }
+
+
+/////////////////////////////
+//Day 3 (Logical Operators)//
+/////////////////////////////
+
+
+//|| Logical or operator
+//&& Logical and operator
+//! Logical not operator
+
+///////////
+//OR test//
+///////////
+
+// const userInput = prompt('Please enter a number:');
+// if(userInput == 1 || userInput == 5) 
+// {
+// 	console.log("What IF God was one of us?");
+
+// } 
+// else
+// {
+// 	console.log("This had better work, or ELSE!");
+// }
+
+////////////
+//AND test//
+////////////
+
+// const userInput = prompt('Please enter a number:');
+// if(userInput > 5 && userInput < 10) 
+// {
+// 	console.log("What IF this code did not exist?");
+
+// } 
+// else
+// {
+// 	console.log("Where ELSE would we be?");
+// }
+
+///////////////////
+//Day 3 (If/Else)//
+///////////////////
+
+// const userInput = prompt('Please enter a number:')
+// if(userInput > 5) 
+// {
+// 	console.log("To IF or not to IF?");
+// }
+// else if(userInput === '' || userInput === null)
+// {
+// 	console.log("ELSE IF you too lazy to enter anything.");
+// } 
+// else if(userInput < 5)
+// {
+// 	console.log("ELSE IF that is not the question, what is?");
+// }
+// else if(userInput === '5')
+// {
+// 	console.log("ELSE IF, this is not creative.");
+// } 
+// else
+// {
+// 	console.log("ELSE is the answer.")
+// }
+
+
+
+// //////////////////
+// //Day 3 (Switch)//
+// //////////////////
+
+// //Store number value day from date function for
+// //today in a variable
+// const today = new Date().getDay();
+
+// //Use swith to check the value in the today variable
+// //and print a string output of the corresponding day
+// switch (today) 
+// {
+// 	case 0:
+// 		console.log("Sunday");
+// 		break;
+// 	case 1:
+// 		console.log("Monday");
+// 		break;
+// 	case 2:
+// 		console.log("Tuesday");
+// 		break;
+// 	case 3:
+// 		console.log("Wednesday");
+// 		break;
+// 	case 4:
+// 		console.log("Thursday");
+// 		break;
+// 	case 5:	
+// 		console.log("Friday");
+// 		break;
+// 	case 6:
+// 		console.log("Saturday");
+// 		break;
+// }
+
+
+
+
+////////////////
+//Day 3 (Math)//
+////////////////
+
+//Create variables and store each math opperation
+// const addition = 1 + 1;
+// const subtraction = 2 - 1;
+// const multiplication = 2 * 2;
+// const division = 10 / 2;
+// const modulo = 11 % 3;
+
+// //Log the results of each math opperation to the console.
+// console.log(addition);
+// console.log(subtraction);
+// console.log(multiplication);
+// console.log(division);
+// console.log(modulo);
+
+// //Print all even numbers less than 100
+// let num = 0;
+// while(num <= 100)
+// {
+// 	if((num % 2) == 0)
+// 	{
+// 		console.log(num);
+// 	}
+// 	num++;
+// }
+
+//++ increments by 1
+//-- decrements by 1
+// let myNum = 1;
+// myNum++;
+// console.log(myNum);
+
+//+= add value to currently stored value in a variable
+//-= subtract value from currently stored value in a variable
+//*= multiply value by currently stored value in a variable
+///= divide value by currently stored value in a variable
+let myNum = 1;
+myNum += 3; //4
+myNum -= 10; //-6
+myNum *= 5; //-30
+myNum /= 12; //-2.5
+console.log(myNum);
+

@@ -330,7 +330,7 @@ alert("Bye bye!");
 
 
 
-/////////////////////
+/*/////////////////////
 //Day 3 (Take Home)//
 /////////////////////
 
@@ -421,4 +421,153 @@ while(!validColor){
 	//Popup alert the users with the message
 	//based on the color chosen
 	alert(message);
+}*/
+
+
+
+//////////////////
+//Day 4 (Arrays)//
+//////////////////
+
+//Create an array of colors
+//let myArray = ['Red', 'Blue', 'Green', 'Purple', 'Black', 'Gray', 'White'];
+
+//Store array's red value in variable
+// let red = myArray[0];
+
+//Log array item to console
+// console.log(myArray[1]);
+
+//Log number of stored array values of the console
+// console.log(myArray.length);
+
+//Create an array with information of different datatypes
+// let about = ['Robert', 28, 'He is human', true]
+
+//Log all about contents to the console
+// console.log(about);
+
+//Create array of numbers from 1 to 9
+// let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+//Log to console results of check if nums is an array
+// console.log(Array.isArray(nums))
+
+//Insert 10 onto the end of the nums array
+// nums.push(10);
+
+//Insert 0 onto the beginning of the nums array.
+// nums.unshift(0);
+
+//Removes last item in the array
+//nums.pop();
+
+//Removes first item in the array
+// nums.shift();
+
+//Removes everything from the specified index and on
+// nums.splice(6);
+
+//Removes specified number of items after specified index
+// nums.splice(6,1);
+
+//Creates and returns a new array starting at a specified index
+// let slice = nums.slice(3);
+// console.log(slice);
+
+//Creates and returns a new array with items between the specified indices
+// let sliceTwo = nums.slice(3, 6);
+// console.log(sliceTwo);
+
+//Log index of specific item in array to console
+// console.log(myArray.indexOf('Green'));
+
+//Store index of item in array to variable
+// let colorIndex = myArray.indexOf('Green');
+
+//Log item at colorIndex from array to console.
+// console.log(myArray[colorIndex]);
+
+//Store green index in a variable then remove it from the 
+//array of collors and log the remaining array to console
+// let color = myArray.indexOf('Green');
+// myArray.splice(color,1);
+// console.log(myArray);
+
+//Log new nums contents to the console
+//console.log(nums);
+
+//Find the index of the last existing matching item in the array.
+// let lastIndex = myArray.lastIndexOf("Red");
+// console.log(lastIndex);
+
+//Use reverse() to log the contents of the myArray in reverse.
+//console.log(myArray.reverse());
+
+//Use sort() on array to alphabetize its contents
+//console.log(myArray.sort());
+
+
+
+/////////////////
+//Day 4 (Loops)//
+/////////////////
+
+//While, for, do while, for each, for of, for in//
+
+
+//Create a while loop that increments num after every loop
+// let num = 0
+// while(num < 10) 
+// {
+// 	num++;
+// }
+//Log num's finaly contents to the console
+// console.log(num); //10
+
+//Create a for loop that counts to 10 and print
+//something at each loop
+// for(let i = 0; i < 10; i++)
+// {
+// 	console.log(i);
+// }
+
+//Create a do while loop to log a count to 10 in the console
+// let num = 0;
+// do 
+// {
+// 	num++;
+// 	console.log(num);
+// } while (num < 10);
+
+//Create for loop that logs all of the contents in my array
+//to the console, one at a time.
+//let myColors = ['Red', 'Blue', 'Green', 'Purple', 'Black', 'Gray', 'White'];
+// for (let i = 0; i < myColors.length; i++)
+// {
+// 	console.log(myColors[i]);
+// }
+
+//Create empty array to store favorite movies.
+let myFavoriteMovies = [];
+//Store favorite movies title and their release date in three different arrays
+let firstFavorite = ['BlahBlah', '1970'];
+let secondFavorite = ['NotRealMovie', '1989'];
+let thirdFavorite = ['FakeFilm', '1990'];
+
+//Put all favorite movies into the myFavoriteMovies array
+myFavoriteMovies.push(firstFavorite, secondFavorite, thirdFavorite);
+
+//Create array to store the movie release dates
+let movieYears = [];
+//Push years from myFavoriteMovies to movieYears
+//movieYears.push(myFavoriteMovies[0][1], myFavoriteMovies[1][1], myFavoriteMovies[2][1]);
+
+//Create for loop to push years from myFavoriteMovies to movieYears
+for(let i = 0; i < myFavoriteMovies.length; i++)
+{
+	movieYears.push(myFavoriteMovies[i][1]);
 }
+
+
+console.log(movieYears);

@@ -549,25 +549,211 @@ while(!validColor){
 // }
 
 //Create empty array to store favorite movies.
-let myFavoriteMovies = [];
+// let myFavoriteMovies = [];
 //Store favorite movies title and their release date in three different arrays
-let firstFavorite = ['BlahBlah', '1970'];
-let secondFavorite = ['NotRealMovie', '1989'];
-let thirdFavorite = ['FakeFilm', '1990'];
+// let firstFavorite = ['BlahBlah', '1970'];
+// let secondFavorite = ['NotRealMovie', '1989'];
+// let thirdFavorite = ['FakeFilm', '1990'];
 
 //Put all favorite movies into the myFavoriteMovies array
-myFavoriteMovies.push(firstFavorite, secondFavorite, thirdFavorite);
+// myFavoriteMovies.push(firstFavorite, secondFavorite, thirdFavorite);
 
 //Create array to store the movie release dates
-let movieYears = [];
+// let movieYears = [];
 //Push years from myFavoriteMovies to movieYears
 //movieYears.push(myFavoriteMovies[0][1], myFavoriteMovies[1][1], myFavoriteMovies[2][1]);
 
 //Create for loop to push years from myFavoriteMovies to movieYears
-for(let i = 0; i < myFavoriteMovies.length; i++)
+// for(let i = 0; i < myFavoriteMovies.length; i++)
+// {
+// 	movieYears.push(myFavoriteMovies[i][1]);
+// }
+
+
+// console.log(movieYears);
+
+
+/*
+/////////////////////
+//Day 4 (Take home)//
+/////////////////////
+
+//Create todo list array
+let todoList = [];
+
+//Generate random number(between 3 and 5) for the number of things to do
+let numberOfTasks = Math.floor((Math.random() * 3) + 3);
+
+//Create for loop to continue equal to the number stored in numberOfTasks
+for (let i = 0; i  < numberOfTasks; i++)
 {
-	movieYears.push(myFavoriteMovies[i][1]);
+	//Prompt user for a task and the number of days required to complete that task.
+	//Push the task and the time, in an array, required into the todoList array.
+	todoList.push([prompt(`Enter todo task #${i + 1}.`), parseInt(prompt("How many days will it take?"))]);
+
+	//Loop if entered number of days is not just an integer. Get a new value from the user
+	while(!Number.isInteger(todoList[i][1]))
+	{
+		todoList[i][1] = parseInt(prompt(`That was not a valid number. How many days will it take to complete "${todoList[i][0]}?"`));
+	}
+}
+
+//Create counter to track loop number in while loop
+let counter = 0;
+
+//Store index of longest task
+let longestTaskIndex = 0;
+
+//Loop through array items using while loop
+while(counter < todoList.length)
+{
+	//If current array list item takes longer than the previously
+	//longest task, save current counter as new longestTaskIndex
+	if(todoList[longestTaskIndex][1] < todoList[counter][1])
+	{
+		//Save loop count as new longest index
+		longestTaskIndex = counter;
+	}
+
+	//Increment loop count
+	counter++;
+}
+
+//Reset counter for use with do while loop
+counter = 0;
+
+//Log to console message indication of longest tasks
+console.log("Longest Task(s): ")
+
+//Loop through each array item
+do
+{
+	//If less days are required to complete a task add "easy-peasy" to that tasks array
+	if(todoList[counter][1] < todoList[longestTaskIndex][1])
+	{
+		todoList[counter].push("easy-peasy");
+	}
+	//Else if the time required is equal to that of the longest task, log it to the console
+	//This will handle the case of multiple tasks being tied for the longest task
+	else if(todoList[counter][1] == todoList[longestTaskIndex][1])
+	{
+		//Log tasks with the most amount of required days to log
+		console.log(todoList[counter][0]);
+	}
+
+	//Increment loop counter
+	counter++;
+} while(counter < todoList.length)
+
+//Find all tasks that include "easy peasy" in their array
+let easyPeasy = [];
+todoList.forEach(function(item,index)
+{
+	//If tasks have more than two coloumns, store the task name.
+	if(item.length > 2){
+		easyPeasy.push(item[0]);
+	}
+});
+
+//Alert the easy peasy labeled tasks.
+alert("Easy Peasy Tasks: \n" + easyPeasy.join("\n"));
+*/
+
+/////////////////////
+//Day 5 (Functions)//
+/////////////////////
+
+//Hoisting - JS runs and gets all var declarations prior to running any other code.
+
+//Anonymous Functions
+// function(name, age) {
+// 	return `My name is ${name} and I am ${age} years old.`;
+// }
+
+
+// //Named Functions
+// function getTodos(question){
+// 	todos.push(prompt(question));
+// }
+
+
+// //Function declarations also get hoisted
+// nameThatBand("Coldplay");
+
+// function nameThatBand(bandName){
+// 	return alert(`${bandName} is overrated`);
+// }
+
+
+
+// //Recursive function
+// function nameThatBand(bandName){
+// 	if(i < 5)
+// 	{
+// 		alert(`${bandName} is overrated`);
+// 		i++;
+// 		nameThatBand("Coldplay");
+// 	}
+// 	else
+// 	{
+// 		return;
+// 	}
+// }
+
+
+// nameThatBand("Coldplay");
+
+
+//"FAT" Arrow functions
+//() => (); //Pointlesss basic function;
+
+// let i = 0;
+// () => { //No argument arrow function
+// 	incrementor ++;
+// 	if(i < 5){
+// 		callFunction();
+// 	}
+// }
+
+// pasta => { //single argument arrow function
+// 	alert(`My favorite pasta is ${pasta}`);
+// }
+
+// pasta => (pasta.toUpperCast())
+
+// (car, house) => {
+// 	//Call an API to save this data...
+// 	return `The returned info is ${data}.`
+// }
+
+
+
+// Accept 1 argument (age of the dog in years).
+// Return the age of the dog using the conversion rate of 1 year to 7 "dog" years.
+// Alert the answer.
+// Make sure you're checking for edge-cases!
+function askDogsAge()
+{
+	let dogsAge = parseInt(prompt("How old is your dog? (In human years)"));
+	let dogsAgeInDogYears = 0;
+
+	if(!isNaN(dogsAge))
+	{
+		return dogAgeConverter(dogsAge);
+	}
+	else
+	{
+		alert("You entered a value that was not a number.");
+		askDogsAge();
+	}
+}
+
+function dogAgeConverter(dogAge)
+{
+	return dogAge * 7;
 }
 
 
-console.log(movieYears);
+let dogsConvertedAge = askDogsAge();
+
+alert(dogsConvertedAge);

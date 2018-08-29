@@ -732,28 +732,189 @@ alert("Easy Peasy Tasks: \n" + easyPeasy.join("\n"));
 // Return the age of the dog using the conversion rate of 1 year to 7 "dog" years.
 // Alert the answer.
 // Make sure you're checking for edge-cases!
-function askDogsAge()
-{
-	let dogsAge = parseInt(prompt("How old is your dog? (In human years)"));
-	let dogsAgeInDogYears = 0;
+// function askDogsAge()
+// {
+// 	let dogsAge = parseInt(prompt("How old is your dog? (In human years)"));
+// 	let dogsAgeInDogYears = 0;
 
-	if(!isNaN(dogsAge))
+// 	if(!isNaN(dogsAge))
+// 	{
+// 		return dogAgeConverter(dogsAge);
+// 	}
+// 	else
+// 	{
+// 		alert("You entered a value that was not a number.");
+// 		askDogsAge();
+// 	}
+// }
+
+// function dogAgeConverter(dogAge)
+// {
+// 	return dogAge * 7;
+// }
+
+
+// let dogsConvertedAge = askDogsAge();
+
+// alert(dogsConvertedAge);
+
+
+/////////////////////
+//Day 5 (Take Home)//
+/////////////////////
+
+
+//Prompts for user inputs. Use an argument to changed desired prompts and functions to be invoked
+function userInfoCollector(taskType = "string")
+{
+	let userInput;
+	//If taskType is number
+	if (taskType == "number")
 	{
-		return dogAgeConverter(dogsAge);
+		let squaredNum;
+		//Prompt the user for a number and parse a a float
+		userInput = parseFloat(prompt("Enter a number: "));
+
+		//If the value is a number
+		if(!isNaN(userInput))
+		{
+			//Store the returned results of squareNumbers().
+			squaredNum = squareNumbers(userInput);
+		}
+		//If not a number (this does include undefined)
+		else
+		{
+			//Alert NaN to let the user know they entered an invalid number
+			alert("NaN");
+			//Reinvoke userInfoCollector() for a number.
+			squaredNum = userInfoCollector("number");
+		}
+
+		//Return the newly squared number
+		return squaredNum;
+	}
+	//If taskType is sentence
+	else if (taskType == "sentence")
+	{
+		//Ask user to enter a sentence to capitalize the first letter and add a period ot the end
+		userInput = invalidPromptChecker(prompt("Enter a sentence:"), "sentence");
+		//Return value returned from completeSentenceizer
+		return completeSentenceizer(userInput);
+	}
+	else if (taskType == "palindrome")
+	{
+		//Ask user to enter any value to test if it is a palindrome
+		userInput = invalidPromptChecker(prompt("Enter anything to test if it is a palindrome:"), "palindrome");
+		//Pass input to palindromeChecker function
+		palindromeChecker(userInput);
+	}
+	//All other cases (which should be a string by default of prompt)
+	else
+	{
+		//Prompt user for any input
+		userInput = invalidPromptChecker(prompt("Enter anything:"));
+		//Pass inpt to string swapper
+		return stringSwapper(userInput);
+	}
+}
+
+//invalidPromptChecker() tests a prompt and reinvokes the userInfoCollector() with the appropriate type
+//if the user hits cancel or ok without entering a value or somehow enters a null or unidentified value.
+function invalidPromptChecker(input, type = "string")
+{
+	if(!input)
+	{
+		alert(`${input} is not a valid entry, please try again.`)
+		return userInfoCollector(type);
 	}
 	else
 	{
-		alert("You entered a value that was not a number.");
-		askDogsAge();
+		return input;
 	}
 }
 
-function dogAgeConverter(dogAge)
+//Squares the num argument and returns the results
+function squareNumbers(num) 
 {
-	return dogAge * 7;
+	return Math.pow(num,2);
+}
+
+//Attempts to capitalize the first character and add a period to the end if necessary.
+function completeSentenceizer(sentence)
+{
+	//Store sentence length
+	let sentenceLength = sentence.length;
+	//Store capitalized first letter of the sentence argument
+	let newSentence = sentence.substring(0, 1).toUpperCase();
+
+	//If the last character is not a period
+	//(I only did this based on the intructions stating to add a period to the end if there is not one)
+	//(Technically if it ended with an ! or ? it would not be proper to add a . to the end)
+	if(!sentence.substring(sentenceLength - 1, sentenceLength).includes("."))
+	{
+		//Add period to the end of sentence
+		sentence += ".";
+		//Increase sentence length by one for the new period.
+		sentenceLength += 1;
+	}
+
+
+	//Remove the first character of the sentence argument
+	sentence = sentence.substring(1, sentenceLength);
+
+	//Combine the new capitalized first character of the original sentence and the altered sentence's contents.
+	newSentence += sentence;
+
+	//Return newSentence
+	return newSentence;
+
+}
+
+//Swap the first and second half of a string
+function stringSwapper(stringValue)
+{
+	//Store stringValue length
+	let stringValueLength = stringValue.length;
+	//Slice out the first half of the string
+	let firstHalfString = stringValue.slice(0, stringValueLength/2);
+	//Slice out the second half of the string
+	let secondHalfString = stringValue.slice(stringValueLength/2, stringValueLength);
+
+	//Return the second then first half of the original string, combined.
+	return secondHalfString + firstHalfString;
+}
+
+//Test if a string is a palindrome
+function palindromeChecker(originalString)
+{
+	//This is possibly not necessary and not the right way to handle this I am sure but there was an error stating .split() can't
+	//be used on undefined, whenever the user would press "ok" despite have the invalidPromptChecker() reprompt them for an input.
+	//After the invalidPromptChecker() reprompted the user, it would get the value, check it correctly and let you know if it was a
+	//palindrome but it would also pop up in the console that .split() can't be used with undefined. This if just prevents the error.
+	if(originalString){
+		//Reverse the original string
+		let reversedString = originalString.split("").reverse().join("");
+
+		//Check if the original string and the reversed string are the same.
+		if(originalString === reversedString)
+		{
+			//If they are the same, alert that the string is a Palindrome
+			alert(`${originalString} is a Palindrome!`);
+		}
+		else
+		{
+			//If they are not the same, alert that the string is not a Palindrome
+			alert(`${originalString} is not a Palindrome!`);
+		}
+	}
 }
 
 
-let dogsConvertedAge = askDogsAge();
+console.log(userInfoCollector("number"));
 
-alert(dogsConvertedAge);
+console.log(userInfoCollector("sentence"));
+
+console.log(userInfoCollector());
+
+userInfoCollector("palindrome");
+

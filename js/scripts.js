@@ -758,7 +758,7 @@ alert("Easy Peasy Tasks: \n" + easyPeasy.join("\n"));
 
 // alert(dogsConvertedAge);
 
-
+/*
 /////////////////////
 //Day 5 (Take Home)//
 /////////////////////
@@ -917,3 +917,65 @@ console.log(userInfoCollector("sentence"));
 console.log(userInfoCollector());
 
 userInfoCollector("palindrome");
+*/
+
+
+
+///////////////////
+//Day 6 (THE DOM)//
+///////////////////
+
+// function domSelector(selector, name){
+
+// 	let selectorReturn;
+
+// 	switch (selector){
+
+// 		case "ElementByTag":
+// 			selectorReturn = document.getElementsByTagName(name);
+// 			break;
+// 		case "ElementByClass":
+// 			selectorReturn = document.getElementsByClassName(name);
+// 			break;
+// 		case "ElementById":
+// 			selectorReturn = document.getElementById(name);
+// 			break;
+// 		case "querySelector":
+// 			selectorReturn = document.querySelector(name);
+// 			break;
+// 		case "querySelectorAll":
+// 			selectorReturn = document.querySelectorAll(name);
+
+// 	}
+
+// 	return selectorReturn;
+
+
+// }
+
+// console.log(domSelector(prompt("enter selector", "ElementByTag"), prompt("enter name", "body")));
+
+
+let button = document.querySelectorAll('button');
+let div = document.querySelectorAll('.red_div');
+let h1 = document.querySelectorAll('h1');
+
+button[0].addEventListener('click', () => 
+{
+	alert("YOU DARE TO PUSH ME!?");
+})
+
+div[0].addEventListener('mouseover', () => 
+{
+	div[0].style.backgroundColor = "white";
+})
+
+document.addEventListener('keyup', (key) => 
+{
+	h1[0].style.color = "green";
+})
+
+document.addEventListener('click', (event) => 
+{
+	location.replace("https://www.facebook.com/")
+})

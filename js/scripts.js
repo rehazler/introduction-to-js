@@ -1070,7 +1070,7 @@ fahrenheit_button.addEventListener("click", (event) =>
 convertion_display.addEventListener("click", (event) => 
 {
 	//If a current temperature is set
-	if(currentTemperature){
+	if(currentTemperature || currentTemperature == 0){
 		//Invoke convertUnit() with temperature from the previous conversion and the scale being the previously converted scale
 		//Then set current temperature equal to the returned value of converted temperature
 	 	currentTemperature = convertUnit(currentTemperature, currentScale);

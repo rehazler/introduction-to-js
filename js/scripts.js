@@ -956,26 +956,123 @@ userInfoCollector("palindrome");
 // console.log(domSelector(prompt("enter selector", "ElementByTag"), prompt("enter name", "body")));
 
 
-let button = document.querySelectorAll('button');
-let div = document.querySelectorAll('.red_div');
-let h1 = document.querySelectorAll('h1');
+// let button = document.querySelectorAll('button');
+// let div = document.querySelectorAll('.red_div');
+// let h1 = document.querySelectorAll('h1');
 
-button[0].addEventListener('click', () => 
+// button[0].addEventListener('click', () => 
+// {
+// 	alert("YOU DARE TO PUSH ME!?");
+// })
+
+// div[0].addEventListener('mouseover', () => 
+// {
+// 	div[0].style.backgroundColor = "white";
+// })
+
+// document.addEventListener('keyup', (key) => 
+// {
+// 	h1[0].style.color = "green";
+// })
+
+// document.addEventListener('click', (event) => 
+// {
+// 	location.replace("https://www.facebook.com/")
+// })
+
+
+
+
+/////////////////////
+//Day 6 (Take Home)//
+/////////////////////
+
+//Form validation function
+function validateForm(){
+	//If the user has not entered a temperature value
+    if(!temperature_input.value)
+    {
+    	//Alert the user to enter a valid temperature value
+        alert("Please enter a valid number");
+    }
+}
+
+//Function that converts celcius to fahrenheit and fahrenheit to celcius
+function convertUnit(temperature, scale)
 {
-	alert("YOU DARE TO PUSH ME!?");
+	//Stores the temperature after it has been converted
+	let convertedTemperature;
+	
+	//If the scale is set to celcius
+	if(scale === "celcius")
+	{
+		//Convert and store the temperature to fahrenheit
+		convertedTemperature = (temperature * 1.8) + 32;
+		//Set the current to fahrenheit
+		currentScale = 'fahrenheit';
+	}
+	else
+	{
+		//Convert and store the temperature to celcius
+		convertedTemperature = (temperature - 32) / 1.8;
+		//Set the current to celcius
+		currentScale = 'celcius';
+	}
+
+	//Parse the converted temperature to a float and round to the nearest 2 significate figures
+	convertedTemperature = Math.round(parseFloat(convertedTemperature*100))/100;
+	//Set <h3> tag to state the previous temperature and show the value it has been converted to.
+	convertion_display.innerHTML = `${temperature} degrees ${scale} is ${convertedTemperature} degrees ${currentScale}`;
+
+	//Return the converted temperature for later conversion
+	return convertedTemperature;
+}
+
+//Store necessary DOM elements to be used
+let celcius_button = document.querySelector("#celcius_button");
+let fahrenheit_button = document.querySelector("#fahrenheit_button");
+let convertion_display = document.querySelector("#convertion_display");
+let temperature_input = document.querySelector("#temperature_input");
+//Storage for temperature value
+let currentTemperature;
+//Storage for temperature scale
+let currentScale = "";
+
+//Event listener for celcius button click
+celcius_button.addEventListener("click", (event) => 
+{
+	//If the user has entered a temperature value
+	if(temperature_input.value)
+	{
+		//Set current scale to celcius
+		currentScale = "celcius";
+		//Invoke convertUnit() with the form temperature from the user and the scale being celcius
+		//Then set current temperature equal to the returned value of converted temperature
+	 	currentTemperature = convertUnit(temperature_input.value, currentScale);
+	}
 })
 
-div[0].addEventListener('mouseover', () => 
+//Event listener for fahrenheit button click
+fahrenheit_button.addEventListener("click", (event) => 
 {
-	div[0].style.backgroundColor = "white";
+	//If the user has entered a temperature value
+	if(temperature_input.value)
+	{
+		//Set current scale to fahrenheit
+		currentScale = "fahrenheit";
+		//Invoke convertUnit() with the form temperature from the user and the scale being fahrenheit
+		//Then set current temperature equal to the returned value of converted temperature
+	 	currentTemperature = convertUnit(temperature_input.value, currentScale);
+	}
 })
 
-document.addEventListener('keyup', (key) => 
+//Event listener for <h3> click
+convertion_display.addEventListener("click", (event) => 
 {
-	h1[0].style.color = "green";
-})
-
-document.addEventListener('click', (event) => 
-{
-	location.replace("https://www.facebook.com/")
+	//If a current temperature is set
+	if(currentTemperature){
+		//Invoke convertUnit() with temperature from the previous conversion and the scale being the previously converted scale
+		//Then set current temperature equal to the returned value of converted temperature
+	 	currentTemperature = convertUnit(currentTemperature, currentScale);
+	}
 })

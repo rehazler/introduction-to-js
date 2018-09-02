@@ -10,17 +10,17 @@
 	<title>Javascript</title>
 </head>
 <body>
-	<h1>Hello World</h1>
-	<div class = "red_div">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. </p>
-		<p id = "this_p_tag">Ut enim ad minim veniam,	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. </p>
-		<p class = "my-special-p-tag">Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<h1>Temperature converter</h1>
+	<div>
+		<p>Please enter the temperature that you want to convert.
+		<br>
+		Then click the scale that you are using, Celcius or Fahrenheit.</p>
+		<form id="temperature_form" onsubmit="validateForm(); return false">
+			<input id="temperature_input" type="number"></input>
+			<button id="celcius_button">Celcius</button> <button id="fahrenheit_button">Fahrenheit</button>
+		</form>
 	</div>
-	<button>PUSH ME!</button>
+	<h3 id="convertion_display"></h3>
 
 <script src="js/scripts.js"></script>
 </body>

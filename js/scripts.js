@@ -987,6 +987,7 @@ userInfoCollector("palindrome");
 //Day 6 (Take Home)//
 /////////////////////
 
+/*
 //Form validation function
 function validateForm(){
 	//If the user has not entered a temperature value
@@ -1076,3 +1077,190 @@ convertion_display.addEventListener("click", (event) =>
 	 	currentTemperature = convertUnit(currentTemperature, currentScale);
 	}
 })
+*/
+
+
+/////////////////////
+//Day 6 (THE DOM 2)//
+/////////////////////
+
+/*//Altering the text content here is possible
+document.getElementById("para").textContent = "more text";
+
+//Altering the text content here is possible too but the text is stored in the variable and can't be changed using "text"
+//Gets only the text content of an element
+let text = document.getElementById("para").textContent;
+console.log(text);
+
+//However, the actual text is saved at this point and cannot be altered via the text variable.
+text = "nope";
+console.log(text);*/
+
+/*
+//Get HTML content of an element
+let text = document.getElementById("para").innerHTML;
+//Log it to the console/
+console.log(text);
+*/
+
+/*
+//store "content" element in content variable
+let content = document.getElementById("content");
+//Creating a paragraph tag
+let myPTag = document.createElement("p");
+
+//Set p tag text content
+myPTag.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsa voluptates molestias, dignissimos debitis ut perspiciatis id temporibus culpa possimus fugiat, consequuntur beatae aperiam officia ratione maiores similique, optio vitae.";
+//Append child of content div
+content.appendChild(myPTag);
+//Append to content div. (Not supported by internet explorer)
+// content.append(myPTag);
+
+//Create a button and adding a class.
+let myButton = document.createElement("button");
+//Set class of element
+myButton.className = "btn btn-primary";
+//Set id of element
+myButton.id = "myButtonID";
+//Set text of element
+myButton.textContent = "Click dis!";
+//Removes class from element
+myButton.classList.remove("btn-primary");
+//Adds class to element
+myButton.classList.add("btn-primary");
+//Appent child of element
+content.appendChild(myButton);
+//Log class list of element to the console
+console.log(document.getElementById("myButtonID").classList);
+
+
+//Using setAttribute
+let myImg = document.createElement("img");
+//Add alt to image element
+myImg.setAttribute("alt", "Add attribute from JS");
+//Add image source to image element
+myImg.setAttribute("src", "https://pbs.twimg.com/profile_images/584025370036314112/0maBx-gf_400x400.jpg");
+//Append image to page
+content.appendChild(myImg);
+
+//Log the source url to the console
+console.log(myImg.getAttribute("src"));
+*/
+
+
+//Generate a page using only JavaScript
+const script = document.querySelector("script");
+const body = document.querySelector("body");
+
+let newP = document.createElement("p");
+let newH1 = document.createElement("h1");
+let newFooter = document.createElement("footer");
+let footerLink = document.createElement("a");
+let newHeader = document.createElement("header");
+let newUl = document.createElement("ul");
+
+
+// Creates an li for the DOM.
+// Expect a list of classes (string) and a string of text.
+// Returns newElement appended to the nav.
+function createLi(classArray, linkText) {
+  let newLink = document.createElement("li");
+  let aTag = document.createElement("a")
+  aTag.setAttribute("href", "#");
+  aTag.textContent = linkText;
+  newLink.appendChild(aTag);
+  for(let i = 0; i < classArray.length; i++) {
+    newLink.classList.add(classArray[i]);
+  };
+  newUl.appendChild(newLink);
+};
+createLi(["pull-left"], "Home");
+createLi(["pull-right"], "Contact");
+createLi(["pull-right"], "About");
+
+newUl.classList.add("nav", "nav-pills");
+
+newHeader.appendChild(newUl);
+body.insertBefore(newHeader, script);
+
+let newDiv = document.createElement("main");
+newDiv.classList.add("col-sm-6", "col-sm-offset-3", "text-center");
+
+function createTextElement(elementType, text) {
+  let newElement = document.createElement(elementType);
+  newElement.textContent = text;
+  return newElement;
+};
+
+let h1 = createTextElement("h1", "Hello World!");
+let p = createTextElement("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+
+newDiv.appendChild(h1);
+newDiv.appendChild(p);
+body.insertBefore(newDiv, script);
+
+footerLink.textContent= "Check me out";
+footerLink.setAttribute("href","https://www.google.com/");
+footerLink.setAttribute("target","blank");
+newFooter.appendChild(footerLink);
+newFooter.classList.add("text-center", "footer");
+body.insertBefore(newFooter, script);
+
+
+//This examples
+/*function printer()
+{
+	let stuff = {
+		firstName: "Robert",
+		lastName: "Hazler",
+		id: 1234,
+		fullName: () => {
+			return this.firstName + " " + this.lastName;
+		},
+	};
+	// console.log("thisPrinter:");
+	// console.log(this);
+	return stuff;
+}
+
+
+console.log(this.printer)
+console.log(this.printer().fullName());
+*/
+// console.log("global this:");
+// console.log(this)
+
+function fizzBuzz()
+{
+	let container = document.createElement("div")
+	container.classList.add("col-sm-6", "col-sm-offset-3", "text-center", "container");
+	let list = document.createElement("ol");
+	for (let i = 1; i <= 100; i++)
+	{
+		let listItem = document.createElement("li");
+		if(i % 15 == 0)
+		{
+			console.log("FizzBuzz");
+			listItem.textContent = "FizzBuzz";
+		}
+		else if (i % 3 == 0) 
+		{
+			console.log("Fizz");
+			listItem.textContent = "Fizz";
+		}
+		else if (i % 5 == 0)
+		{
+			console.log("Buzz");
+			listItem.textContet = "Buzz";
+		}
+		else
+		{
+			console.log(i);
+			listItem.textContent = i;
+		}
+		list.appendChild(listItem)
+	}
+	container.appendChild(list);
+	body.insertBefore(container,script);
+}
+fizzBuzz();

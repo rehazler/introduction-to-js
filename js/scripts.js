@@ -1391,7 +1391,6 @@ button.addEventListener('click', () =>
 	});
 	//Create p for timestamp
 	let newTimeStamp = createTextElement("p", `Posted on: ${currentTimeStamp}`);
-
 	//Change text on button
 	createPostButton.textContent = "Create Another New Post";
 	//Add h1 to div
@@ -1402,6 +1401,8 @@ button.addEventListener('click', () =>
 	mainDiv.insertBefore(whatUserDidP,createPostButton);
 	//Insert div into page before script
 	body.insertBefore(mainDiv, script);
+	//Set p tag text alighment to justify
+	whatUserDidP.style.textAlign = "justify";
 	//Set p tag to users favorite color
 	whatUserDidP.style.backgroundColor = favoriteColor;
 })

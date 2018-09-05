@@ -1147,7 +1147,7 @@ content.appendChild(myImg);
 console.log(myImg.getAttribute("src"));
 */
 
-
+/*
 //Generate a page using only JavaScript
 const script = document.querySelector("script");
 const body = document.querySelector("body");
@@ -1206,7 +1206,7 @@ newFooter.appendChild(footerLink);
 newFooter.classList.add("text-center", "footer");
 body.insertBefore(newFooter, script);
 
-
+*/
 //This examples
 /*function printer()
 {
@@ -1230,6 +1230,7 @@ console.log(this.printer().fullName());
 // console.log("global this:");
 // console.log(this)
 
+/*
 function fizzBuzz()
 {
 	let container = document.createElement("div")
@@ -1264,3 +1265,143 @@ function fizzBuzz()
 	body.insertBefore(container,script);
 }
 fizzBuzz();
+*/
+
+
+/////////////////////
+//Day 7 (Take Home)//
+/////////////////////
+
+
+
+//Prompts for user inputs. Use an argument to changed desired prompts and functions to be invoked
+function userInfoCollector(promptType)
+{
+	let userInput;
+	//If promptType is title
+	if (promptType == "title")
+	{
+		//Prompt user for a title for their blog post
+		userInput = prompt("Enter a title for this blog post: ");
+	}
+	//If promptType is sentence
+	else if (promptType == "color")
+	{
+		//Prompt user for color for the background of their blog post
+		userInput = prompt("Of the following, which is your favorite color: \n"
+   					+ "Red, Orange, Yellow, Green, Blue, Pink, Purple, Black, White, Grey");
+	}
+	//All other cases (which should be a string by default of prompt)
+	else
+	{
+		//Prompt user for a blog entry
+		userInput = prompt("Enter a your daily blog entry:");
+	}
+
+	return invalidPromptChecker(userInput, promptType);
+}
+
+//invalidPromptChecker() tests a prompt and reinvokes the userInfoCollector() with the appropriate type
+//if the user hits cancel or ok without entering a value or somehow enters a null or unidentified value.
+function invalidPromptChecker(input, type)
+{
+	if(!input)
+	{
+		alert(`${input} is not a valid entry, please try again.`)
+		return userInfoCollector(type);
+	}
+	else if(type === "color")
+	{
+		//If input is valid and type is color verify that the color is valid
+		return validColorChecker(input);
+	}
+	else
+	{
+		return input;
+	}
+}
+
+//Check for a valid color
+function validColorChecker(favoriteColor)
+{
+	//If the color is in the list return it
+	if(["red", "orange", "yellow", "green", "blue", "pink", "purple", "black", "white", "grey"].includes((favoriteColor.toLowerCase())))
+	{
+		return favoriteColor;
+	}
+	//Else tell the user it is invalid and ask them again
+	else
+	{
+		alert("That was an invalid color, please choose one from the list.")
+		return userInfoCollector("color");
+	}
+}
+
+//Create an html text element
+function createTextElement(elementType, text) {
+	//Store new element
+	let newElement = document.createElement(elementType);
+	//Set text content equal to the entered value in the text argument
+	newElement.textContent = text;
+	//Return newly created elemtn
+	return newElement;
+}
+
+//Generate a page using only JavaScript
+const script = document.querySelector("script");
+const body = document.querySelector("body");
+
+//Create main div
+let mainDiv = document.createElement("main");
+//Add classes to center main div
+mainDiv.classList.add("col-sm-6", "col-sm-offset-3", "text-center");
+//Create a button
+let createPostButton = document.createElement("button");
+//Set class of button
+createPostButton.className = "btn btn-primary";
+//Set id of button
+createPostButton.id = "createPostButtonID";
+//Set text of button
+createPostButton.textContent = "Create Your First Post!";
+
+//Add button to div
+mainDiv.appendChild(createPostButton);
+//Insert div into page before script
+body.insertBefore(mainDiv, script);
+
+
+//Store button element
+let button = document.querySelector('#createPostButtonID');
+
+button.addEventListener('click', () => 
+{
+	//Create h1 to write title
+	let titleH1 = createTextElement("h1", userInfoCollector("title"));
+	//Create p of what the user did today
+	let whatUserDidP = createTextElement("p", userInfoCollector("blog"));
+	//Set background of p to users favorite color
+	let favoriteColor = userInfoCollector("color");
+	//Store current timestamp
+	let currentTimeStamp = new Date().toLocaleString(undefined, {
+		day: 'numeric',
+		month: 'numeric',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+	});
+	//Create p for timestamp
+	let newTimeStamp = createTextElement("p", `Posted on: ${currentTimeStamp}`);
+
+	//Change text on button
+	createPostButton.textContent = "Create Another New Post";
+	//Add h1 to div
+	mainDiv.insertBefore(titleH1, createPostButton);
+	//Add timestamp for post
+	mainDiv.insertBefore(newTimeStamp, createPostButton);
+	//Add p to div
+	mainDiv.insertBefore(whatUserDidP,createPostButton);
+	//Insert div into page before script
+	body.insertBefore(mainDiv, script);
+	//Set p tag to users favorite color
+	whatUserDidP.style.backgroundColor = favoriteColor;
+})

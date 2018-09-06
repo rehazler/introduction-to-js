@@ -1252,7 +1252,7 @@ function fizzBuzz()
 		else if (i % 5 == 0)
 		{
 			console.log("Buzz");
-			listItem.textContet = "Buzz";
+			listItem.textContent = "Buzz";
 		}
 		else
 		{
@@ -1272,8 +1272,7 @@ fizzBuzz();
 //Day 7 (Take Home)//
 /////////////////////
 
-
-
+/*
 //Prompts for user inputs. Use an argument to changed desired prompts and functions to be invoked
 function userInfoCollector(promptType)
 {
@@ -1406,3 +1405,177 @@ button.addEventListener('click', () =>
 	//Set p tag to users favorite color
 	whatUserDidP.style.backgroundColor = favoriteColor;
 })
+*/
+
+/////////////////
+//Day 8 (Forms)//
+/////////////////
+
+//Generate a page using only JavaScript
+// const script = document.querySelector("script");
+// const body = document.querySelector("body");
+
+// function fizzBuzz(count, value1, value2)
+// {
+// 	const value3 = value1 * value2;
+// 	let container = document.createElement("div")
+// 	container.classList.add("col-sm-6", "col-sm-offset-3", "text-center", "container");
+// 	let list = document.createElement("ol");
+// 	for (let i = 1; i <= count; i++)
+// 	{
+// 		let listItem = document.createElement("li");
+// 		if(i % value3 === 0)
+// 		{
+// 			listItem.textContent = "FizzBuzz";
+// 		}
+// 		else if (i % value1 === 0) 
+// 		{
+// 			listItem.textContent = "Fizz";
+// 		}
+// 		else if (i % value2 === 0)
+// 		{
+// 			listItem.textContent = "Buzz";
+// 		}
+// 		else
+// 		{
+// 			listItem.textContent = i;
+// 		}
+// 		list.appendChild(listItem)
+// 	}
+// 	container.appendChild(list);
+// 	body.insertBefore(container,script);
+// }
+// fizzBuzz(50, 2, 5);
+
+// //Store specific form in the messageForm variable. The html form can either be fetched by name or by id
+// let messageForm = document.forms.messageForm;
+// //Store the specific message input by using the array brackets to choose which input in the form by name or id
+// let message = messageForm["msg"];
+// //Store the value in the input of the mesage form from above
+// let messageValue = message["value"];
+
+// console.log(messageForm);
+// console.log(message);
+// console.log(messageValue);
+
+// //Catches input submit events
+// messageForm.addEventListener("submit", event =>
+// {
+// 	event.preventDefault();
+// 	console.log(event.target.msg.value);
+// })
+
+//!!!Do not do this!!!!
+// function submitForm()
+// {
+// 	console.log(document.getElementById("message").value);
+// }
+
+// //Generate a page using only JavaScript
+// const script = document.querySelector("script");
+// const body = document.querySelector("body");
+
+// let name = "Robert";
+// var myName = "robert";
+// let age = 28;
+// let currentClass = "JavaScript";
+
+// console.log(this.name);
+// naming();
+
+// function naming(name, myName)
+// {
+// 	name = "not robert";
+// 	myName = "also not robert";
+
+// 	console.log("in")
+// 	console.log(this.name);
+// 	console.log(name);
+// 	console.log(myName);
+// 	console.log(this.myName);
+// }
+
+// console.log("out");
+// console.log(this.name);
+// console.log(name);
+// console.log(myName);
+// console.log(this.myName);
+
+
+/*function aboutMe() 
+{
+	let me = {
+		firstName: "Robert",
+		lastName: "Hazler",
+		age: 28,
+		currentClass: "JavaScript",
+		fullName: function () { return `${this.firstName} ${this.lastName}`}
+	}
+
+	//console.log(`${me.firstName} ${me.lastName}`);
+	console.log(me.fullName());
+
+}
+
+aboutMe();*/
+
+//Generate a page using only JavaScript
+const script = document.querySelector("script");
+const body = document.querySelector("body");
+
+
+//Store specific form in the messageForm variable. The html form can either be fetched by name or by id
+let messageForm = document.forms.messageForm;
+//Store the specific message input by using the array brackets to choose which input in the form by name or id
+let message = messageForm["msg"];
+//Store the value in the input of the mesage form from above
+let messageValue = message.value;
+
+//Catches input submit events
+messageForm.addEventListener("submit", event =>
+{
+	event.preventDefault();
+	let list = document.querySelector("#list");
+	let newMessage = document.createElement("li");
+	let message = event.target["msg"].value;
+
+	newMessage.textContent = message;
+	list.appendChild(newMessage);
+	messageForm.reset();
+
+})
+
+function generateList(){
+	let fullList = 
+	[
+		'First',
+		'Second',
+		'Third',
+		'Fourth'
+	];
+
+	let list = document.getElementById("list");
+
+	for (var i = 0; i < fullList.length; i++) 
+	{
+		let msg = document.createElement("li");
+		msg.textContent = fullList[i];
+		msg.id = `item-${i+1}`;
+		list.appendChild(msg);
+	}	
+}
+
+
+generateList();
+
+// function createLi(classArray, linkText) {
+//   let newLink = document.createElement("li");
+//   let aTag = document.createElement("a")
+//   aTag.setAttribute("href", "#");
+//   aTag.textContent = linkText;
+//   newLink.appendChild(aTag);
+//   for(let i = 0; i < classArray.length; i++) {
+//     newLink.classList.add(classArray[i]);
+//   };
+//   newUl.appendChild(newLink);
+// };

@@ -1627,7 +1627,7 @@ generateList();
 // 	first_name: String,
 // 	last_name: String
 // }
-
+/*
 function User(email, userName, password)
 {
 	this.email = email;
@@ -1660,3 +1660,133 @@ user = new User(email, userName, password);
 
 console.log(user.getUserName());
 console.log(`This is a valid user: ${user.isValidUser()}`);
+*/
+
+
+///////////////////////////////////////////////////////////////////
+//Day 10 (Timers / LocalStorage / sessionStorage / strict / life)//
+///////////////////////////////////////////////////////////////////
+
+/*
+function delayAlert(duration) 
+{
+	duration = duration * 1000
+	timer = setTimeout(triggerAlert, duration);
+}
+
+function cancelAlert()
+{
+	clearTimeout(timer);
+} 
+
+function delayIntervalAlert(duration) 
+{
+	duration = duration * 1000
+	interval = setInterval(triggerAlert, duration);
+}
+
+function cancelIntervalAlert()
+{
+	clearInterval(interval);
+} 
+
+function triggerAlert() 
+{
+	alert("Timer Complete");
+}
+
+
+let timer, interval;
+let button = document.querySelector("#timer-start");
+let stopButton = document.querySelector("#timer-stop");
+let intervalButton = document.querySelector("#interval-start");
+let stopIntervalButton = document.querySelector("#interval-stop");
+
+button.addEventListener("click", event => 
+{
+	let time = prompt("How many seconds would you like to wait?")
+	delayAlert(time);
+});
+
+stopButton.addEventListener("click", event => 
+{
+	cancelAlert();
+});
+
+intervalButton.addEventListener("click", event => 
+{
+	let time = prompt("How many seconds would you like to wait between each loop?")
+	delayIntervalAlert(time);
+});
+
+stopIntervalButton.addEventListener("click", event => 
+{
+	cancelIntervalAlert();
+});
+*/
+
+function timeDigits(i)
+{
+	if(i < 10)
+	{
+		return "0" + i ;
+	}
+	return i;
+}
+
+function displatClock()
+{
+	const clock = document.querySelector("#clock");
+
+	let time, hour, min, sec;
+	setInterval(() => {
+		time = new Date();
+		sec = timeDigits(time.getSeconds());
+		if(sec == 0 || !min){
+			min = timeDigits(time.getMinutes());
+			if(min == 0 || !hour){
+				hour = time.getHours();
+			}
+		}
+		clock.textContent = `${hour}:${min}:${sec}`;
+	}, 1000);
+}
+
+
+displatClock();
+
+
+function storeUser(username)
+{
+	localStorage.setItem("user", username);
+}
+
+function getUser()
+{
+	let username =  document.querySelector("#currentUser");
+	username.textContent = localStorage.getItem("user");
+}
+
+document.querySelector("#set-username").addEventListener("click", event =>{
+	let user = prompt("What is your username?");
+	storeUser(user);
+})
+
+document.querySelector("#get-username").addEventListener("click", event =>{
+	getUser();
+})
+
+
+//IFFE
+// let number = 1;
+// let getNumber = (function(x)
+// {
+// 	return function() {
+// 		alert(x);
+// 	};
+// }(number));
+
+// number = 2;
+
+// getNumber();
+

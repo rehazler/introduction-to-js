@@ -1520,7 +1520,7 @@ button.addEventListener('click', () =>
 aboutMe();*/
 
 //Generate a page using only JavaScript
-const script = document.querySelector("script");
+/*const script = document.querySelector("script");
 const body = document.querySelector("body");
 
 
@@ -1567,7 +1567,7 @@ function generateList(){
 
 
 generateList();
-
+*/
 // function createLi(classArray, linkText) {
 //   let newLink = document.createElement("li");
 //   let aTag = document.createElement("a")
@@ -1579,3 +1579,84 @@ generateList();
 //   };
 //   newUl.appendChild(newLink);
 // };
+
+
+///////////////////
+//Day 9 (Objects)//
+///////////////////
+
+
+// let string = new String("string");
+// console.log(Object.getPrototypeOf(string));
+
+// let num = new Number(1);
+// console.log(Object.getPrototypeOf(num));
+
+// let thing1 = 1;
+// console.log(Object.getPrototypeOf(thing1));
+
+// let thing2 = "1";
+// console.log(Object.getPrototypeOf(thing2));
+
+
+// let storageObject = 
+// {
+// 	movieTitle: "The Matrix",
+// 	gameTitle: "Legend of Legaia",
+// 	bookTitle: "Cirque Du Freak",
+// 	groupGameTitle: {
+// 		boardGameTitle: "TI"
+// 	}
+// }
+
+// console.log(storageObject, storageObject.hasOwnProperty("movieTitle"), storageObject.hasOwnProperty("boardGameTitle"));
+
+// console.log(storageObject.movieTitle, storageObject["gameTitle"], storageObject.groupGameTitle.boardGameTitle);
+
+// let newString = new String("blah blah"), newArray = new Array(["stuff"]), newObject = new Object({name: "Robert"}), newBoolean = new Boolean(true), newNumber = new Number(4);
+
+// console.log(newString, newArray, newObject, newBoolean, newNumber);
+
+// let user = 
+// {
+// 	id: Integer,
+// 	date_created: Date,
+// 	password: Hashed String,
+// 	user_name: String,
+// 	email_address: String,
+// 	first_name: String,
+// 	last_name: String
+// }
+
+function User(email, userName, password)
+{
+	this.email = email;
+	this.user_name = userName;
+	this.password = password;
+	this.getUserName = function ()
+	{
+		return this.user_name;
+	};
+	this.isValidUser = function ()
+	{
+		if(this.email && this.user_name && this.password)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	};
+}
+
+let email, userName, password;
+
+email = prompt("Enter email address:");
+userName = prompt("Enter user name ");
+password = prompt("Enter password");
+
+user = new User(email, userName, password);
+
+console.log(user.getUserName());
+console.log(`This is a valid user: ${user.isValidUser()}`);

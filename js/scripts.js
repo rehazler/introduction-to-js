@@ -1724,7 +1724,7 @@ stopIntervalButton.addEventListener("click", event =>
 	cancelIntervalAlert();
 });
 */
-
+/*
 function timeDigits(i)
 {
 	if(i < 10)
@@ -1775,7 +1775,7 @@ document.querySelector("#set-username").addEventListener("click", event =>{
 document.querySelector("#get-username").addEventListener("click", event =>{
 	getUser();
 })
-
+*/
 
 //IFFE
 // let number = 1;
@@ -1789,4 +1789,70 @@ document.querySelector("#get-username").addEventListener("click", event =>{
 // number = 2;
 
 // getNumber();
+
+
+
+/////////////////////////////////////////////////////
+//Day 11 (JSON/API/Closure/Classes/Object Advanced)//
+/////////////////////////////////////////////////////
+
+
+function getRepos()
+{
+	return fetch("https://api.github.com/users/rehazler/repos").then(data => 
+	{
+		return data.json();
+	}).then(repos =>
+	{
+		let repoList = document.querySelector("#myRepos");
+		repos.forEach( repo => {
+			// if(repo.name === "introduction-to-js")
+			// {
+			// 	return;
+			// }
+			console.log(repo);
+			let repoLi = document.createElement("li");
+			let paragraph = document.createElement("p");
+			let link = document.createElement("a");
+
+			repoList.classList.add("list-group-item");
+
+			paragraph.textContent = repo.name;
+			link.textContent = "View";
+			link.setAttribute("href", repo.html_url);
+			link.setAttribute("target", "_blank");
+			repoLi.appendChild(paragraph);
+			repoLi.appendChild(link);
+			// repoLi.textContent = repo;//object
+
+			repoList.appendChild(repoLi);
+		});
+	});
+}
+
+
+
+getRepos();
+
+
+
+
+class User 
+{
+	constructor(name) 
+	{
+		this.name = name;
+	}
+
+
+	sayHello() 
+	{
+		alert(this.name);
+	}
+}
+
+let user = new User("Robert");
+
+user.sayHello();
+
 
